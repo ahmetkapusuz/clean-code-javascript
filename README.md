@@ -1,34 +1,29 @@
 # clean-code-javascript
 
-## Table of Contents
+## İçindekiler
 
-1. [Introduction](#introduction)
-2. [Variables](#variables)
-3. [Functions](#functions)
-4. [Objects and Data Structures](#objects-and-data-structures)
-5. [Classes](#classes)
+1. [Giriş](#introduction)
+2. [Değişkenler](#variables)
+3. [Fonksiyonlar](#functions)
+4. [Nesneler ve Veri Yapıları](#objects-and-data-structures)
+5. [Sınıflar](#classes)
 6. [SOLID](#solid)
-7. [Testing](#testing)
-8. [Concurrency](#concurrency)
-9. [Error Handling](#error-handling)
-10. [Formatting](#formatting)
-11. [Comments](#comments)
-12. [Translation](#translation)
+7. [Test](#testing)
+8. [Eşzamanlılık](#concurrency)
+9. [Hata Denetimi](#error-handling)
+10. [Biçimleme](#formatting)
+11. [Yorumlar](#comments)
+12. [Çeviriler](#translation)
 
-## Introduction
+## Giriş
 
 ![Humorous image of software quality estimation as a count of how many expletives
 you shout when reading code](https://www.osnews.com/images/comics/wtfm.jpg)
 
-Software engineering principles, from Robert C. Martin's book
-[_Clean Code_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
-adapted for JavaScript. This is not a style guide. It's a guide to producing
-[readable, reusable, and refactorable](https://github.com/ryanmcdermott/3rs-of-software-architecture) software in JavaScript.
+Robert C. Martin'in [_Clean Code_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) kitabından alınan yazılım mühendisliği prensiplerinin JavaScript'e uyarlamasıdır. Bu bir stil rehberi değildir. Bu, JavaScript'le [okunabilir, tekrar kullanılabilir, ve tekrar düzenlenebilir](https://github.com/ryanmcdermott/3rs-of-software-architecture) yazılımlar üretmek için bir rehberdir.
 
-Not every principle herein has to be strictly followed, and even fewer will be
-universally agreed upon. These are guidelines and nothing more, but they are
-ones codified over many years of collective experience by the authors of
-_Clean Code_.
+Buradaki her prensip kesinlikle uygulanmak zorunda değildir, hatta çok azında genel bir 
+mutabakat vardır. Bunlar sadece genel bir kılavuzdan daha fazlası değildir, fakat _Clean Code_ yazarlarının yıllardan beri edindiği tecrübelerin bir bileşimidir.
 
 Our craft of software engineering is just a bit over 50 years old, and we are
 still learning a lot. When software architecture is as old as architecture
