@@ -41,13 +41,13 @@ için kendinizi hırpalamayın, onun yerine kodu hırpalayın.
 **Kötü:**
 
 ```javascript
-const yyyymmdstr = moment().format("YYYY/MM/DD");
+const yyyymmdstr = moment().format('YYYY/MM/DD');
 ```
 
 **İyi:**
 
 ```javascript
-const currentDate = moment().format("YYYY/MM/DD");
+const currentDate = moment().format('YYYY/MM/DD');
 ```
 
 **[⬆ Başa dön](#table-of-contents)**
@@ -104,7 +104,7 @@ setTimeout(blastOff, MILLISECONDS_IN_A_DAY);
 **Kötü:**
 
 ```javascript
-const address = "One Infinite Loop, Cupertino 95014";
+const address = 'One Infinite Loop, Cupertino 95014';
 const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 saveCityZipCode(
   address.match(cityZipCodeRegex)[1],
@@ -115,7 +115,7 @@ saveCityZipCode(
 **İyi:**
 
 ```javascript
-const address = "One Infinite Loop, Cupertino 95014";
+const address = 'One Infinite Loop, Cupertino 95014';
 const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 const [, city, zipCode] = address.match(cityZipCodeRegex) || [];
 saveCityZipCode(city, zipCode);
@@ -130,7 +130,7 @@ Açık, belirgin (explicit) üstü kapalıdan (implicit) daha iyidir.
 **Kötü:**
 
 ```javascript
-const locations = ["Austin", "New York", "San Francisco"];
+const locations = ['Austin', 'New York', 'San Francisco'];
 locations.forEach(l => {
   doStuff();
   doSomeOtherStuff();
@@ -145,7 +145,7 @@ locations.forEach(l => {
 **İyi:**
 
 ```javascript
-const locations = ["Austin", "New York", "San Francisco"];
+const locations = ['Austin', 'New York', 'San Francisco'];
 locations.forEach(location => {
   doStuff();
   doSomeOtherStuff();
@@ -166,13 +166,13 @@ Eğer sınıfınız/nesneniz size adını söylüyorsa, aynı ismi değişken is
 
 ```javascript
 const Car = {
-  carMake: "Honda",
-  carModel: "Accord",
-  carColor: "Blue"
+  carMake: 'Honda',
+  carModel: 'Accord',
+  carColor: 'Blue',
 };
 
 function paintCar(car) {
-  car.carColor = "Red";
+  car.carColor = 'Red';
 }
 ```
 
@@ -180,13 +180,13 @@ function paintCar(car) {
 
 ```javascript
 const Car = {
-  make: "Honda",
-  model: "Accord",
-  color: "Blue"
+  make: 'Honda',
+  model: 'Accord',
+  color: 'Blue',
 };
 
 function paintCar(car) {
-  car.color = "Red";
+  car.color = 'Red';
 }
 ```
 
@@ -202,7 +202,7 @@ Diğer "falsy" değerler, örneğin `''`, `""`, `false`, `null`, `0`, `NaN`, var
 
 ```javascript
 function createMicrobrewery(name) {
-  const breweryName = name || "Hipster Brew Co.";
+  const breweryName = name || 'Hipster Brew Co.';
   // ...
 }
 ```
@@ -210,43 +210,34 @@ function createMicrobrewery(name) {
 **İyi:**
 
 ```javascript
-function createMicrobrewery(name = "Hipster Brew Co.") {
+function createMicrobrewery(name = 'Hipster Brew Co.') {
   // ...
 }
 ```
 
 **[⬆ Başa dön](#table-of-contents)**
 
-## **Functions**
+## **Fonksiyonlar**
 
-### Function arguments (2 or fewer ideally)
+### Fonksiyon argümanları (İdeal olarak 2 ya da daha az)
 
-Limiting the amount of function parameters is incredibly important because it
-makes testing your function easier. Having more than three leads to a
-combinatorial explosion where you have to test tons of different cases with
-each separate argument.
+Fonksiyon parametrelerini sınırlamak çok önemlidir, çünkü fonksiyonunuzu test etmeyi daha kola hale getirir.
+Üçten fazla parametre olması, kombinasyonların çok artmasına ve onlarca farklı durumun ortaya çıkmasına sebep olur.
 
-One or two arguments is the ideal case, and three should be avoided if possible.
-Anything more than that should be consolidated. Usually, if you have
-more than two arguments then your function is trying to do too much. In cases
-where it's not, most of the time a higher-level object will suffice as an
-argument.
+Bir ya da iki argüman idealdir, ve mümkünse üç olmasından kaçınmak gerekir.
+Bundan daha fazlası birleştirilmelidir. Genellikle eğer iki argümandan daha fazlası varsa,
+fonksiyonunuz çok fazla iş yapmaya çalışıyordur. Bunun geçerli olmadığı durumlarda, çoğunlukla üst seviye bir nesne argüman olarak yeterli olacaktır.
 
-Since JavaScript allows you to make objects on the fly, without a lot of class
-boilerplate, you can use an object if you are finding yourself needing a
-lot of arguments.
+JavaScript, size anında nesne yaratma imkanı sunduğundan dolayı, eğer çok fazla argüman yollamaya ihtiyacınız varsa,
+birçok sınıf oluşturmaya gerek kalmadan bir nesne içerisinde bu argümanları gönderebilirsiniz.
 
-To make it obvious what properties the function expects, you can use the ES2015/ES6
-destructuring syntax. This has a few advantages:
+Fonksiyonun hangi alanlara ihtiyacı olduğunu daha açıkça belirtmek için, ES2015/ES6 nesne ayrıştırma söz dizimin kullanabilirsiniz.
+Bunun birkaç avantajı:
 
-1. When someone looks at the function signature, it's immediately clear what
-   properties are being used.
-2. Destructuring also clones the specified primitive values of the argument
-   object passed into the function. This can help prevent side effects. Note:
-   objects and arrays that are destructured from the argument object are NOT
-   cloned.
-3. Linters can warn you about unused properties, which would be impossible
-   without destructuring.
+1. Birisi fonksiyon imzasına baktığında, hemen hangi özelliklerin kullanıldığı açık bir şekilde görülür.
+2. Ayrıştırma aynı zamanda fonksiyona gönderilen argümanların belirtilen ilk değerlerini klonlar.
+   Bu, bazı yan etkileri önlemeye yarayabilir. Not: Argüman nesnesinden ayrıştırılan nesneler ve diziler klonlanmaz.
+3. Linterlar sizi kullanılmayan alanlar konusunda uyarabilir, nesne ayrıştırması olmasa bu mümkün olmazdı.
 
 **Kötü:**
 
@@ -264,22 +255,22 @@ function createMenu({ title, body, buttonText, cancellable }) {
 }
 
 createMenu({
-  title: "Foo",
-  body: "Bar",
-  buttonText: "Baz",
-  cancellable: true
+  title: 'Foo',
+  body: 'Bar',
+  buttonText: 'Baz',
+  cancellable: true,
 });
 ```
 
 **[⬆ Başa dön](#table-of-contents)**
 
-### Functions should do one thing
+### Fonksiyonlar sadece tek bir iş yapmalıdır
 
-This is by far the most important rule in software engineering. When functions
-do more than one thing, they are harder to compose, test, and reason about.
-When you can isolate a function to just one action, they can be refactored
-easily and your code will read much cleaner. If you take nothing else away from
-this guide other than this, you'll be ahead of many developers.
+Bu açık arayla yazılım mühendisliğindeki en önemli kuraldır.
+Fonksiyonlar birden fazla iş yaptığında onları toparlamak, test etmek ve nedenselleştirmek zorlaşır.
+Bir fonksiyonu sadece tek bir iş yapacak şekilde izole ettiğinizde, onu kolayca tekrardan düzenleyebilir ve
+kodunuzu daha temiz bir hale getirebilirsiniz. Bu rehberden sadece bu kuralı bile alıp uygulasanız,
+birçok geliştiricinin önüne geçebilirsiniz.
 
 **Kötü:**
 
@@ -309,7 +300,7 @@ function isActiveClient(client) {
 
 **[⬆ Başa dön](#table-of-contents)**
 
-### Function names should say what they do
+### Fonksiyon isimleri fonksiyonun ne yaptığını göstermelidir
 
 **Kötü:**
 
@@ -337,11 +328,10 @@ addMonthToDate(1, date);
 
 **[⬆ Başa dön](#table-of-contents)**
 
-### Functions should only be one level of abstraction
+### Fonksiyonlar sadece birinci seviye soyutlama yapmalıdır
 
-When you have more than one level of abstraction your function is usually
-doing too much. Splitting up functions leads to reusability and easier
-testing.
+Eğer bir seviyeden daha fazla soyutlamanız varsa fonksiyonunuz genellikle çok fazla iş yapıyor demektir.
+Fonksiyonları bölmek tekrar kullanılabilirliği ve kolay test edilebilirliği artırmayı sağlar.
 
 **Kötü:**
 
@@ -351,7 +341,7 @@ function parseBetterJSAlternative(code) {
     // ...
   ];
 
-  const statements = code.split(" ");
+  const statements = code.split(' ');
   const tokens = [];
   REGEXES.forEach(REGEX => {
     statements.forEach(statement => {
@@ -386,7 +376,7 @@ function tokenize(code) {
     // ...
   ];
 
-  const statements = code.split(" ");
+  const statements = code.split(' ');
   const tokens = [];
   REGEXES.forEach(REGEX => {
     statements.forEach(statement => {
@@ -409,28 +399,23 @@ function parse(tokens) {
 
 **[⬆ Başa dön](#table-of-contents)**
 
-### Remove duplicate code
+### Tekrar eden kodu silin
 
-Do your absolute best to avoid duplicate code. Duplicate code is bad because it
-means that there's more than one place to alter something if you need to change
-some logic.
+Tekrar eden koddan kurtulmak için elinizden gelenin en iyisini yapmaya çalışın. Tekrar eden kod kötüdür çünkü
+eğer kod mantığında bir değişiklik yapmanız gerekirse değiştirmeniz gereken birden fazla yer var demektir.
 
-Imagine if you run a restaurant and you keep track of your inventory: all your
-tomatoes, onions, garlic, spices, etc. If you have multiple lists that
-you keep this on, then all have to be updated when you serve a dish with
-tomatoes in them. If you only have one list, there's only one place to update!
+Bir restoran işlettiğinizi ve stoklarınızın izini tuttuğunuzu düşünün: bütün domates, soğan, sarımsak, baharat vs.
+Eğer bunları yazdığınız birden fazla liste varsa, içinde domates olan bir yemek servis ettiğinizde bütün bu listeleri güncellemeniz gerekir.
+Eğer bir listeniz olursa, sadece onu güncellersiniz ve işiniz hallolur.
 
-Oftentimes you have duplicate code because you have two or more slightly
-different things, that share a lot in common, but their differences force you
-to have two or more separate functions that do much of the same things. Removing
-duplicate code means creating an abstraction that can handle this set of
-different things with just one function/module/class.
+Çoğunlukla tekrar eden kodunuz olacaktır, çünkü iki ya da daha fazla birbirinden çok az farklı olan, birçok ortak noktası olan şeyleriniz olacaktır.
+Ama aralarındaki farklılıklar sizi benzer işler yapan iki ya da daha fazla fonksiyon yaratmaya itmiş olabilir.
+Tekrar eden kodları silmek, bir fonksiyon/module/sınıf ile bu farklılıkların üstesinden gelebilecek bir soyutlama yaratmak demektir.
 
-Getting the abstraction right is critical, that's why you should follow the
-SOLID principles laid out in the _Classes_ section. Bad abstractions can be
-worse than duplicate code, so be careful! Having said this, if you can make
-a good abstraction, do it! Don't repeat yourself, otherwise you'll find yourself
-updating multiple places anytime you want to change one thing.
+Bu soyutlamayı doğru yapmak kritik bir önem arz eder, bu yüzden _Sınıflar_ bölümündeki SOLID prensiplerini izlemelisiniz.
+Kötü soyutlamalar tekrar eden koddan daha kötü olabilir, o yüzden dikkatli olmalısınız! Bunu söylerken, eğer iyi bir soyutlama
+yapabiliyorsanız yapmalısınız! Kendinizi tekrar etmeyin, yoksa kendinizi bir şeyi değiştirmek için birden fazla yeri
+güncellerken bulursunuz.
 
 **Kötü:**
 
@@ -443,7 +428,7 @@ function showDeveloperList(developers) {
     const data = {
       expectedSalary,
       experience,
-      githubLink
+      githubLink,
     };
 
     render(data);
@@ -458,7 +443,7 @@ function showManagerList(managers) {
     const data = {
       expectedSalary,
       experience,
-      portfolio
+      portfolio,
     };
 
     render(data);
@@ -476,14 +461,14 @@ function showEmployeeList(employees) {
 
     const data = {
       expectedSalary,
-      experience
+      experience,
     };
 
     switch (employee.type) {
-      case "manager":
+      case 'manager':
         data.portfolio = employee.getMBAProjects();
         break;
-      case "developer":
+      case 'developer':
         data.githubLink = employee.getGithubLink();
         break;
     }
@@ -495,22 +480,22 @@ function showEmployeeList(employees) {
 
 **[⬆ Başa dön](#table-of-contents)**
 
-### Set default objects with Object.assign
+### Varsayılan nesneleri Object.assign ile değerleyin
 
 **Kötü:**
 
 ```javascript
 const menuConfig = {
   title: null,
-  body: "Bar",
+  body: 'Bar',
   buttonText: null,
-  cancellable: true
+  cancellable: true,
 };
 
 function createMenu(config) {
-  config.title = config.title || "Foo";
-  config.body = config.body || "Bar";
-  config.buttonText = config.buttonText || "Baz";
+  config.title = config.title || 'Foo';
+  config.body = config.body || 'Bar';
+  config.buttonText = config.buttonText || 'Baz';
   config.cancellable =
     config.cancellable !== undefined ? config.cancellable : true;
 }
@@ -522,19 +507,19 @@ createMenu(menuConfig);
 
 ```javascript
 const menuConfig = {
-  title: "Order",
+  title: 'Order',
   // User did not include 'body' key
-  buttonText: "Send",
-  cancellable: true
+  buttonText: 'Send',
+  cancellable: true,
 };
 
 function createMenu(config) {
   config = Object.assign(
     {
-      title: "Foo",
-      body: "Bar",
-      buttonText: "Baz",
-      cancellable: true
+      title: 'Foo',
+      body: 'Bar',
+      buttonText: 'Baz',
+      cancellable: true,
     },
     config
   );
@@ -548,9 +533,10 @@ createMenu(menuConfig);
 
 **[⬆ Başa dön](#table-of-contents)**
 
-### Don't use flags as function parameters
+### Bayrakları (Flag) foksiyon parametresi olarak kullanmayın
 
-Flags tell your user that this function does more than one thing. Functions should do one thing. Split out your functions if they are following different code paths based on a boolean.
+Bayraklar kullanıcıya bu fonksiyonun birden fazla iş yaptığını söyler. Fonksiyonlar sadece tek bir iş yapmalıdır.
+Bir boolean değere göre farklı yollar izleyen fonksiyonlarınızı farklı fonksiyonlara bölün.
 
 **Kötü:**
 
@@ -600,10 +586,10 @@ be happier than the vast majority of other programmers.
 ```javascript
 // Global variable referenced by following function.
 // If we had another function that used this name, now it'd be an array and it could break it.
-let name = "Ryan McDermott";
+let name = 'Ryan McDermott';
 
 function splitIntoFirstAndLastName() {
-  name = name.split(" ");
+  name = name.split(' ');
 }
 
 splitIntoFirstAndLastName();
@@ -615,10 +601,10 @@ console.log(name); // ['Ryan', 'McDermott'];
 
 ```javascript
 function splitIntoFirstAndLastName(name) {
-  return name.split(" ");
+  return name.split(' ');
 }
 
-const name = "Ryan McDermott";
+const name = 'Ryan McDermott';
 const newName = splitIntoFirstAndLastName(name);
 
 console.log(name); // 'Ryan McDermott';
@@ -725,21 +711,21 @@ Favor this style of programming when you can.
 ```javascript
 const programmerOutput = [
   {
-    name: "Uncle Bobby",
-    linesOfCode: 500
+    name: 'Uncle Bobby',
+    linesOfCode: 500,
   },
   {
-    name: "Suzie Q",
-    linesOfCode: 1500
+    name: 'Suzie Q',
+    linesOfCode: 1500,
   },
   {
-    name: "Jimmy Gosling",
-    linesOfCode: 150
+    name: 'Jimmy Gosling',
+    linesOfCode: 150,
   },
   {
-    name: "Gracie Hopper",
-    linesOfCode: 1000
-  }
+    name: 'Gracie Hopper',
+    linesOfCode: 1000,
+  },
 ];
 
 let totalOutput = 0;
@@ -754,21 +740,21 @@ for (let i = 0; i < programmerOutput.length; i++) {
 ```javascript
 const programmerOutput = [
   {
-    name: "Uncle Bobby",
-    linesOfCode: 500
+    name: 'Uncle Bobby',
+    linesOfCode: 500,
   },
   {
-    name: "Suzie Q",
-    linesOfCode: 1500
+    name: 'Suzie Q',
+    linesOfCode: 1500,
   },
   {
-    name: "Jimmy Gosling",
-    linesOfCode: 150
+    name: 'Jimmy Gosling',
+    linesOfCode: 150,
   },
   {
-    name: "Gracie Hopper",
-    linesOfCode: 1000
-  }
+    name: 'Gracie Hopper',
+    linesOfCode: 1000,
+  },
 ];
 
 const totalOutput = programmerOutput.reduce(
@@ -784,7 +770,7 @@ const totalOutput = programmerOutput.reduce(
 **Kötü:**
 
 ```javascript
-if (fsm.state === "fetching" && isEmpty(listNode)) {
+if (fsm.state === 'fetching' && isEmpty(listNode)) {
   // ...
 }
 ```
@@ -793,7 +779,7 @@ if (fsm.state === "fetching" && isEmpty(listNode)) {
 
 ```javascript
 function shouldShowSpinner(fsm, listNode) {
-  return fsm.state === "fetching" && isEmpty(listNode);
+  return fsm.state === 'fetching' && isEmpty(listNode);
 }
 
 if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
@@ -849,11 +835,11 @@ class Airplane {
   // ...
   getCruisingAltitude() {
     switch (this.type) {
-      case "777":
+      case '777':
         return this.getMaxAltitude() - this.getPassengerCount();
-      case "Air Force One":
+      case 'Air Force One':
         return this.getMaxAltitude();
-      case "Cessna":
+      case 'Cessna':
         return this.getMaxAltitude() - this.getFuelExpenditure();
     }
   }
@@ -903,9 +889,9 @@ The first thing to consider is consistent APIs.
 ```javascript
 function travelToTexas(vehicle) {
   if (vehicle instanceof Bicycle) {
-    vehicle.pedal(this.currentLocation, new Location("texas"));
+    vehicle.pedal(this.currentLocation, new Location('texas'));
   } else if (vehicle instanceof Car) {
-    vehicle.drive(this.currentLocation, new Location("texas"));
+    vehicle.drive(this.currentLocation, new Location('texas'));
   }
 }
 ```
@@ -914,7 +900,7 @@ function travelToTexas(vehicle) {
 
 ```javascript
 function travelToTexas(vehicle) {
-  vehicle.move(this.currentLocation, new Location("texas"));
+  vehicle.move(this.currentLocation, new Location('texas'));
 }
 ```
 
@@ -937,13 +923,13 @@ TypeScript (which, like I said, is a great alternative!).
 ```javascript
 function combine(val1, val2) {
   if (
-    (typeof val1 === "number" && typeof val2 === "number") ||
-    (typeof val1 === "string" && typeof val2 === "string")
+    (typeof val1 === 'number' && typeof val2 === 'number') ||
+    (typeof val1 === 'string' && typeof val2 === 'string')
   ) {
     return val1 + val2;
   }
 
-  throw new Error("Must be of type String or Number");
+  throw new Error('Must be of type String or Number');
 }
 ```
 
@@ -1003,7 +989,7 @@ function newRequestModule(url) {
 }
 
 const req = newRequestModule;
-inventoryTracker("apples", req, "www.inventory-awesome.io");
+inventoryTracker('apples', req, 'www.inventory-awesome.io');
 ```
 
 **İyi:**
@@ -1014,7 +1000,7 @@ function newRequestModule(url) {
 }
 
 const req = newRequestModule;
-inventoryTracker("apples", req, "www.inventory-awesome.io");
+inventoryTracker('apples', req, 'www.inventory-awesome.io');
 ```
 
 **[⬆ Başa dön](#table-of-contents)**
@@ -1042,7 +1028,7 @@ function makeBankAccount() {
   // ...
 
   return {
-    balance: 0
+    balance: 0,
     // ...
   };
 }
@@ -1072,7 +1058,7 @@ function makeBankAccount() {
   return {
     // ...
     getBalance,
-    setBalance
+    setBalance,
   };
 }
 
@@ -1097,7 +1083,7 @@ Employee.prototype.getName = function getName() {
   return this.name;
 };
 
-const employee = new Employee("John Doe");
+const employee = new Employee('John Doe');
 console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 delete employee.name;
 console.log(`Employee name: ${employee.getName()}`); // Employee name: undefined
@@ -1110,11 +1096,11 @@ function makeEmployee(name) {
   return {
     getName() {
       return name;
-    }
+    },
   };
 }
 
-const employee = makeEmployee("John Doe");
+const employee = makeEmployee('John Doe');
 console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 delete employee.name;
 console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
@@ -1136,7 +1122,7 @@ classes until you find yourself needing larger and more complex objects.
 ```javascript
 const Animal = function(age) {
   if (!(this instanceof Animal)) {
-    throw new Error("Instantiate Animal with `new`");
+    throw new Error('Instantiate Animal with `new`');
   }
 
   this.age = age;
@@ -1146,7 +1132,7 @@ Animal.prototype.move = function move() {};
 
 const Mammal = function(age, furColor) {
   if (!(this instanceof Mammal)) {
-    throw new Error("Instantiate Mammal with `new`");
+    throw new Error('Instantiate Mammal with `new`');
   }
 
   Animal.call(this, age);
@@ -1159,7 +1145,7 @@ Mammal.prototype.liveBirth = function liveBirth() {};
 
 const Human = function(age, furColor, languageSpoken) {
   if (!(this instanceof Human)) {
-    throw new Error("Instantiate Human with `new`");
+    throw new Error('Instantiate Human with `new`');
   }
 
   Mammal.call(this, age, furColor);
@@ -1244,8 +1230,8 @@ class Car {
   }
 }
 
-const car = new Car("Ford", "F-150", "red");
-car.setColor("pink");
+const car = new Car('Ford', 'F-150', 'red');
+car.setColor('pink');
 car.save();
 ```
 
@@ -1284,7 +1270,7 @@ class Car {
   }
 }
 
-const car = new Car("Ford", "F-150", "red").setColor("pink").save();
+const car = new Car('Ford', 'F-150', 'red').setColor('pink').save();
 ```
 
 **[⬆ Başa dön](#table-of-contents)**
@@ -1434,14 +1420,14 @@ add new functionalities without changing existing code.
 class AjaxAdapter extends Adapter {
   constructor() {
     super();
-    this.name = "ajaxAdapter";
+    this.name = 'ajaxAdapter';
   }
 }
 
 class NodeAdapter extends Adapter {
   constructor() {
     super();
-    this.name = "nodeAdapter";
+    this.name = 'nodeAdapter';
   }
 }
 
@@ -1451,11 +1437,11 @@ class HttpRequester {
   }
 
   fetch(url) {
-    if (this.adapter.name === "ajaxAdapter") {
+    if (this.adapter.name === 'ajaxAdapter') {
       return makeAjaxCall(url).then(response => {
         // transform response and return
       });
-    } else if (this.adapter.name === "nodeAdapter") {
+    } else if (this.adapter.name === 'nodeAdapter') {
       return makeHttpCall(url).then(response => {
         // transform response and return
       });
@@ -1478,7 +1464,7 @@ function makeHttpCall(url) {
 class AjaxAdapter extends Adapter {
   constructor() {
     super();
-    this.name = "ajaxAdapter";
+    this.name = 'ajaxAdapter';
   }
 
   request(url) {
@@ -1489,7 +1475,7 @@ class AjaxAdapter extends Adapter {
 class NodeAdapter extends Adapter {
   constructor() {
     super();
-    this.name = "nodeAdapter";
+    this.name = 'nodeAdapter';
   }
 
   request(url) {
@@ -1667,8 +1653,8 @@ class DOMTraverser {
 }
 
 const $ = new DOMTraverser({
-  rootNode: document.getElementsByTagName("body"),
-  animationModule() {} // Most of the time, we won't need to animate when traversing.
+  rootNode: document.getElementsByTagName('body'),
+  animationModule() {}, // Most of the time, we won't need to animate when traversing.
   // ...
 });
 ```
@@ -1700,10 +1686,10 @@ class DOMTraverser {
 }
 
 const $ = new DOMTraverser({
-  rootNode: document.getElementsByTagName("body"),
+  rootNode: document.getElementsByTagName('body'),
   options: {
-    animationModule() {}
-  }
+    animationModule() {},
+  },
 });
 ```
 
@@ -1737,7 +1723,7 @@ example below, the implicit contract is that any Request module for an
 ```javascript
 class InventoryRequester {
   constructor() {
-    this.REQ_METHODS = ["HTTP"];
+    this.REQ_METHODS = ['HTTP'];
   }
 
   requestItem(item) {
@@ -1761,7 +1747,7 @@ class InventoryTracker {
   }
 }
 
-const inventoryTracker = new InventoryTracker(["apples", "bananas"]);
+const inventoryTracker = new InventoryTracker(['apples', 'bananas']);
 inventoryTracker.requestItems();
 ```
 
@@ -1783,7 +1769,7 @@ class InventoryTracker {
 
 class InventoryRequesterV1 {
   constructor() {
-    this.REQ_METHODS = ["HTTP"];
+    this.REQ_METHODS = ['HTTP'];
   }
 
   requestItem(item) {
@@ -1793,7 +1779,7 @@ class InventoryRequesterV1 {
 
 class InventoryRequesterV2 {
   constructor() {
-    this.REQ_METHODS = ["WS"];
+    this.REQ_METHODS = ['WS'];
   }
 
   requestItem(item) {
@@ -1804,7 +1790,7 @@ class InventoryRequesterV2 {
 // By constructing our dependencies externally and injecting them, we can easily
 // substitute our request module for a fancy new one that uses WebSockets.
 const inventoryTracker = new InventoryTracker(
-  ["apples", "bananas"],
+  ['apples', 'bananas'],
   new InventoryRequesterV2()
 );
 inventoryTracker.requestItems();
@@ -1834,23 +1820,23 @@ or refactoring an existing one.
 **Kötü:**
 
 ```javascript
-import assert from "assert";
+import assert from 'assert';
 
-describe("MomentJS", () => {
-  it("handles date boundaries", () => {
+describe('MomentJS', () => {
+  it('handles date boundaries', () => {
     let date;
 
-    date = new MomentJS("1/1/2015");
+    date = new MomentJS('1/1/2015');
     date.addDays(30);
-    assert.equal("1/31/2015", date);
+    assert.equal('1/31/2015', date);
 
-    date = new MomentJS("2/1/2016");
+    date = new MomentJS('2/1/2016');
     date.addDays(28);
-    assert.equal("02/29/2016", date);
+    assert.equal('02/29/2016', date);
 
-    date = new MomentJS("2/1/2015");
+    date = new MomentJS('2/1/2015');
     date.addDays(28);
-    assert.equal("03/01/2015", date);
+    assert.equal('03/01/2015', date);
   });
 });
 ```
@@ -1858,25 +1844,25 @@ describe("MomentJS", () => {
 **İyi:**
 
 ```javascript
-import assert from "assert";
+import assert from 'assert';
 
-describe("MomentJS", () => {
-  it("handles 30-day months", () => {
-    const date = new MomentJS("1/1/2015");
+describe('MomentJS', () => {
+  it('handles 30-day months', () => {
+    const date = new MomentJS('1/1/2015');
     date.addDays(30);
-    assert.equal("1/31/2015", date);
+    assert.equal('1/31/2015', date);
   });
 
-  it("handles leap year", () => {
-    const date = new MomentJS("2/1/2016");
+  it('handles leap year', () => {
+    const date = new MomentJS('2/1/2016');
     date.addDays(28);
-    assert.equal("02/29/2016", date);
+    assert.equal('02/29/2016', date);
   });
 
-  it("handles non-leap year", () => {
-    const date = new MomentJS("2/1/2015");
+  it('handles non-leap year', () => {
+    const date = new MomentJS('2/1/2015');
     date.addDays(28);
-    assert.equal("03/01/2015", date);
+    assert.equal('03/01/2015', date);
   });
 });
 ```
@@ -1893,20 +1879,20 @@ Promises are a built-in global type. Use them!
 **Kötü:**
 
 ```javascript
-import { get } from "request";
-import { writeFile } from "fs";
+import { get } from 'request';
+import { writeFile } from 'fs';
 
 get(
-  "https://en.wikipedia.org/wiki/Robert_Cecil_Martin",
+  'https://en.wikipedia.org/wiki/Robert_Cecil_Martin',
   (requestErr, response, body) => {
     if (requestErr) {
       console.error(requestErr);
     } else {
-      writeFile("article.html", body, writeErr => {
+      writeFile('article.html', body, writeErr => {
         if (writeErr) {
           console.error(writeErr);
         } else {
-          console.log("File written");
+          console.log('File written');
         }
       });
     }
@@ -1917,15 +1903,15 @@ get(
 **İyi:**
 
 ```javascript
-import { get } from "request-promise";
-import { writeFile } from "fs-extra";
+import { get } from 'request-promise';
+import { writeFile } from 'fs-extra';
 
-get("https://en.wikipedia.org/wiki/Robert_Cecil_Martin")
+get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
   .then(body => {
-    return writeFile("article.html", body);
+    return writeFile('article.html', body);
   })
   .then(() => {
-    console.log("File written");
+    console.log('File written');
   })
   .catch(err => {
     console.error(err);
@@ -1945,15 +1931,15 @@ today!
 **Kötü:**
 
 ```javascript
-import { get } from "request-promise";
-import { writeFile } from "fs-extra";
+import { get } from 'request-promise';
+import { writeFile } from 'fs-extra';
 
-get("https://en.wikipedia.org/wiki/Robert_Cecil_Martin")
+get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
   .then(body => {
-    return writeFile("article.html", body);
+    return writeFile('article.html', body);
   })
   .then(() => {
-    console.log("File written");
+    console.log('File written');
   })
   .catch(err => {
     console.error(err);
@@ -1963,14 +1949,14 @@ get("https://en.wikipedia.org/wiki/Robert_Cecil_Martin")
 **İyi:**
 
 ```javascript
-import { get } from "request-promise";
-import { writeFile } from "fs-extra";
+import { get } from 'request-promise';
+import { writeFile } from 'fs-extra';
 
 async function getCleanCodeArticle() {
   try {
-    const body = await get("https://en.wikipedia.org/wiki/Robert_Cecil_Martin");
-    await writeFile("article.html", body);
-    console.log("File written");
+    const body = await get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin');
+    await writeFile('article.html', body);
+    console.log('File written');
   } catch (err) {
     console.error(err);
   }
@@ -2083,8 +2069,8 @@ they want. The point is, no matter what you all choose, just be consistent.
 const DAYS_IN_WEEK = 7;
 const daysInMonth = 30;
 
-const songs = ["Back In Black", "Stairway to Heaven", "Hey Jude"];
-const Artists = ["ACDC", "Led Zeppelin", "The Beatles"];
+const songs = ['Back In Black', 'Stairway to Heaven', 'Hey Jude'];
+const Artists = ['ACDC', 'Led Zeppelin', 'The Beatles'];
 
 function eraseDatabase() {}
 function restore_database() {}
@@ -2099,8 +2085,8 @@ class Alpaca {}
 const DAYS_IN_WEEK = 7;
 const DAYS_IN_MONTH = 30;
 
-const SONGS = ["Back In Black", "Stairway to Heaven", "Hey Jude"];
-const ARTISTS = ["ACDC", "Led Zeppelin", "The Beatles"];
+const SONGS = ['Back In Black', 'Stairway to Heaven', 'Hey Jude'];
+const ARTISTS = ['ACDC', 'Led Zeppelin', 'The Beatles'];
 
 function eraseDatabase() {}
 function restoreDatabase() {}
@@ -2126,11 +2112,11 @@ class PerformanceReview {
   }
 
   lookupPeers() {
-    return db.lookup(this.employee, "peers");
+    return db.lookup(this.employee, 'peers');
   }
 
   lookupManager() {
-    return db.lookup(this.employee, "manager");
+    return db.lookup(this.employee, 'manager');
   }
 
   getPeerReviews() {
@@ -2177,7 +2163,7 @@ class PerformanceReview {
   }
 
   lookupPeers() {
-    return db.lookup(this.employee, "peers");
+    return db.lookup(this.employee, 'peers');
   }
 
   getManagerReview() {
@@ -2185,7 +2171,7 @@ class PerformanceReview {
   }
 
   lookupManager() {
-    return db.lookup(this.employee, "manager");
+    return db.lookup(this.employee, 'manager');
   }
 
   getSelfReview() {
@@ -2308,8 +2294,8 @@ proper indentation and formatting give the visual structure to your code.
 // Scope Model Instantiation
 ////////////////////////////////////////////////////////////////////////////////
 $scope.model = {
-  menu: "foo",
-  nav: "bar"
+  menu: 'foo',
+  nav: 'bar',
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2324,8 +2310,8 @@ const actions = function() {
 
 ```javascript
 $scope.model = {
-  menu: "foo",
-  nav: "bar"
+  menu: 'foo',
+  nav: 'bar',
 };
 
 const actions = function() {
