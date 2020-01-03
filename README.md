@@ -609,40 +609,29 @@ console.log(newName); // ['Ryan', 'McDermott'];
 
 **[⬆ Başa dön](#table-of-contents)**
 
-### Avoid Side Effects (part 2)
+### Yan Etkilerden Kaçının (bölüm 2)
 
-In JavaScript, primitives are passed by value and objects/arrays are passed by
-reference. In the case of objects and arrays, if your function makes a change
-in a shopping cart array, for example, by adding an item to purchase,
-then any other function that uses that `cart` array will be affected by this
-addition. That may be great, however it can be bad too. Let's imagine a bad
-situation:
+JavaScript'te basit türler değer olarak aktarılır ve nesneler/diziler referans olarak aktarılır.
+Nesneler ve dizilere örnek olarak, bir alışveriş sepeti dizisini ele alalım, eğer bir fonksiyon bu sepet dizisine satın almak için yeni bir ürün eklerse
+bu diziyi kullanan diğer bir fonksiyon da bu eklemeden etkilenecektir. Bu çok güzel olabilir, ama aynı zamanda kötü de olabilir.
+Örneğin kötü bir senaryoyu düşünelim:
 
-The user clicks the "Purchase", button which calls a `purchase` function that
-spawns a network request and sends the `cart` array to the server. Because
-of a bad network connection, the `purchase` function has to keep retrying the
-request. Now, what if in the meantime the user accidentally clicks "Add to Cart"
-button on an item they don't actually want before the network request begins?
-If that happens and the network request begins, then that purchase function
-will send the accidentally added item because it has a reference to a shopping
-cart array that the `addItemToCart` function modified by adding an unwanted
-item.
+Kullanıcı "Satın Al" butonuna tıklar ve bu buton `purchase` adında bir fonksiyonu tetikler ve
+`cart` dizisini bir ağ isteği ile sunucuya gönderir. Kötü bir ağ bağlantısı nedeniyle `purchase` fonksiyonunu isteği tekrarlamak zorunda kalır.
+Şimdi, eğer bu süre içerisinde yeni istek gönderilmeden önce kullanıcı yanlışlıkla sepetine yeni bir ürün eklerse ne olur?
+Bu durumda en son yanlışlıkla eklenen ürün de `purchase` fonksiyonu tarafından sunucuya gönderilir.
 
-A great solution would be for the `addItemToCart` to always clone the `cart`,
-edit it, and return the clone. This ensures that no other functions that are
-holding onto a reference of the shopping cart will be affected by any changes.
+Bu probleme en iyi çözüm `addItemToCart` fonksiyonunun `cart` dizisinde değişiklik yapmadan önce klonlayıp, klonladığı dizide değişiklik yapmasıdır.
+Bu sayede `cart` dizisine referansı olan başka fonksiyonlar `addItemToCart` fonksiyonu tarafından etkilenmemiş olurlar.
 
-Two caveats to mention to this approach:
+Bu yaklaşımda bahsetmemiz gereken iki önemli uyarı var:
 
-1. There might be cases where you actually want to modify the input object,
-   but when you adopt this programming practice you will find that those cases
-   are pretty rare. Most things can be refactored to have no side effects!
+1. Girdi olarak gelen nesneyi değiştirmek istediğiniz durumlar da olabilir,
+   ama bu programlama pratiğine alıştığınızda böyle durumların gerçekten çok nadir olduğunu göreceksiniz.
+   Birçok kod herhangi bir yan etkisi olmayacak şekilde yeniden yazılabilir!
 
-2. Cloning big objects can be very expensive in terms of performance. Luckily,
-   this isn't a big issue in practice because there are
-   [great libraries](https://facebook.github.io/immutable-js/) that allow
-   this kind of programming approach to be fast and not as memory intensive as
-   it would be for you to manually clone objects and arrays.
+2. Büyük nesneleri klonlamak performans açısından çok maliyetli olabilir. Neyse ki pratikte bu çok büyük bir problem değil, çünkü
+   bu tarz programlama yaklaşımlarının performanslı ve bellek anlamında sorun oluşturmayacak şekilde çalışabilmesi için yaratılmış [muhteşem kütüphaneler](https://facebook.github.io/immutable-js/) var.
 
 **Kötü:**
 
