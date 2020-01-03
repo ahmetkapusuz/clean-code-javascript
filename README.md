@@ -2,9 +2,9 @@
 
 ## İçindekiler
 
-1. [Giriş](#introduction)
-2. [Değişkenler](#variables)
-3. [Fonksiyonlar](#functions)
+1. [Giriş](#giriş)
+2. [Değişkenler](#değişkenler)
+3. [Fonksiyonlar](#fonksiyonlar)
 4. [Nesneler ve Veri Yapıları](#objects-and-data-structures)
 5. [Sınıflar](#classes)
 6. [SOLID](#solid)
@@ -50,7 +50,7 @@ const yyyymmdstr = moment().format("YYYY/MM/DD");
 const currentDate = moment().format("YYYY/MM/DD");
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Aynı tipdeki değişkenler için aynı kelimeleri kullanın
 
@@ -68,7 +68,7 @@ getCustomerRecord();
 getUser();
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Aranabilir isimler kullanın
 
@@ -97,7 +97,7 @@ const MILLISECONDS_IN_A_DAY = 86400000;
 setTimeout(blastOff, MILLISECONDS_IN_A_DAY);
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Açıklayıcı isimler kullanın
 
@@ -121,7 +121,7 @@ const [, city, zipCode] = address.match(cityZipCodeRegex) || [];
 saveCityZipCode(city, zipCode);
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Zihinsel Haritalamadan Sakının
 
@@ -156,7 +156,7 @@ locations.forEach(location => {
 });
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Gereksiz bağlamları eklemeyin
 
@@ -190,7 +190,7 @@ function paintCar(car) {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Koşul ifadeleri ya da kısa devreleme (short circuiting) yerine varsayılan argüman değerlerini kullanın.
 
@@ -215,7 +215,7 @@ function createMicrobrewery(name = "Hipster Brew Co.") {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ## **Fonksiyonlar**
 
@@ -262,7 +262,7 @@ createMenu({
 });
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Fonksiyonlar sadece tek bir iş yapmalıdır
 
@@ -298,7 +298,7 @@ function isActiveClient(client) {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Fonksiyon isimleri fonksiyonun ne yaptığını göstermelidir
 
@@ -326,7 +326,7 @@ const date = new Date();
 addMonthToDate(1, date);
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Fonksiyonlar sadece birinci seviye soyutlama yapmalıdır
 
@@ -397,7 +397,7 @@ function parse(tokens) {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Tekrar eden kodu silin
 
@@ -478,7 +478,7 @@ function showEmployeeList(employees) {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Varsayılan nesneleri Object.assign ile değerleyin
 
@@ -531,7 +531,7 @@ function createMenu(config) {
 createMenu(menuConfig);
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Bayrakları (Flag) foksiyon parametresi olarak kullanmayın
 
@@ -562,7 +562,7 @@ function createTempFile(name) {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Yan Etkilerden Kaçının (bölüm 1)
 
@@ -607,7 +607,7 @@ console.log(name); // 'Ryan McDermott';
 console.log(newName); // ['Ryan', 'McDermott'];
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Yan Etkilerden Kaçının (bölüm 2)
 
@@ -649,7 +649,7 @@ const addItemToCart = (cart, item) => {
 };
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Don't write to global functions
 
@@ -683,7 +683,7 @@ class SuperArray extends Array {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Favor functional programming over imperative programming
 
@@ -748,7 +748,7 @@ const totalOutput = programmerOutput.reduce(
 );
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Encapsulate conditionals
 
@@ -772,7 +772,7 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Avoid negative conditionals
 
@@ -800,7 +800,7 @@ if (isDOMNodePresent(node)) {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Avoid conditionals
 
@@ -860,7 +860,7 @@ class Cessna extends Airplane {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Avoid type-checking (part 1)
 
@@ -889,7 +889,7 @@ function travelToTexas(vehicle) {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Avoid type-checking (part 2)
 
@@ -926,7 +926,7 @@ function combine(val1, val2) {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Don't over-optimize
 
@@ -954,7 +954,7 @@ for (let i = 0; i < list.length; i++) {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Remove dead code
 
@@ -988,7 +988,7 @@ const req = newRequestModule;
 inventoryTracker("apples", req, "www.inventory-awesome.io");
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ## **Objects and Data Structures**
 
@@ -1051,7 +1051,7 @@ const account = makeBankAccount();
 account.setBalance(100);
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Make objects have private members
 
@@ -1091,7 +1091,7 @@ delete employee.name;
 console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ## **Classes**
 
@@ -1178,7 +1178,7 @@ class Human extends Mammal {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Use method chaining
 
@@ -1258,7 +1258,7 @@ class Car {
 const car = new Car("Ford", "F-150", "red").setColor("pink").save();
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Prefer composition over inheritance
 
@@ -1328,7 +1328,7 @@ class Employee {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ## **SOLID**
 
@@ -1390,7 +1390,7 @@ class UserSettings {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Open/Closed Principle (OCP)
 
@@ -1481,7 +1481,7 @@ class HttpRequester {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Liskov Substitution Principle (LSP)
 
@@ -1600,7 +1600,7 @@ const shapes = [new Rectangle(4, 5), new Rectangle(4, 5), new Square(5)];
 renderLargeShapes(shapes);
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Interface Segregation Principle (ISP)
 
@@ -1678,7 +1678,7 @@ const $ = new DOMTraverser({
 });
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Dependency Inversion Principle (DIP)
 
@@ -1781,7 +1781,7 @@ const inventoryTracker = new InventoryTracker(
 inventoryTracker.requestItems();
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ## **Testing**
 
@@ -1852,7 +1852,7 @@ describe("MomentJS", () => {
 });
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ## **Concurrency**
 
@@ -1903,7 +1903,7 @@ get("https://en.wikipedia.org/wiki/Robert_Cecil_Martin")
   });
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Async/Await are even cleaner than Promises
 
@@ -1950,7 +1950,7 @@ async function getCleanCodeArticle() {
 getCleanCodeArticle();
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ## **Error Handling**
 
@@ -2029,7 +2029,7 @@ getdata()
   });
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ## **Formatting**
 
@@ -2080,7 +2080,7 @@ class Animal {}
 class Alpaca {}
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Function callers and callees should be close
 
@@ -2168,7 +2168,7 @@ const review = new PerformanceReview(employee);
 review.perfReview();
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ## **Comments**
 
@@ -2215,7 +2215,7 @@ function hashIt(data) {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Don't leave commented out code in your codebase
 
@@ -2236,7 +2236,7 @@ doStuff();
 doStuff();
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Don't have journal comments
 
@@ -2265,7 +2265,7 @@ function combine(a, b) {
 }
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ### Avoid positional markers
 
@@ -2304,7 +2304,7 @@ const actions = function() {
 };
 ```
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
 
 ## Translation
 
@@ -2331,4 +2331,4 @@ This is also available in other languages:
 - ![it](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**:
   [frappacchio/clean-code-javascript/](https://github.com/frappacchio/clean-code-javascript/)
 
-**[⬆ Başa dön](#table-of-contents)**
+**[⬆ Başa dön](#İçindekiler)**
